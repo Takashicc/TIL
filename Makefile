@@ -1,7 +1,10 @@
 
-.PHONY: help format
+.PHONY: run shell fmck fm help
 
 .DEFAULT_GOAL := help
+
+run: ## Run server
+	python til/manage.py runserver
 
 shell: ## Spawns a shell within the virtualenv
 	python -m pipenv shell
