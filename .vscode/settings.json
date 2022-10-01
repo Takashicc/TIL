@@ -21,7 +21,7 @@
     "python.analysis.typeCheckingMode": "strict",
     "python.languageServer": "Pylance",
     "[python]": {
-        "editor.defaultFormatter": "ms-python.vscode-pylance",
+        "editor.defaultFormatter": "ms-python.python",
         "editor.codeActionsOnSave": {
             "source.organizeImports": true,
         }
