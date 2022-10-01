@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+djangorestframework = "*"
 
 [dev-packages]
 black = "22.8.0"
