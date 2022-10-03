@@ -4,7 +4,13 @@
 .DEFAULT_GOAL := help
 
 run: ## Run server
-	python til/manage.py runserver
+	uvicorn src.main:app --reload --host 0.0.0.0
+
+migrate: ## Migrate
+	python -m src.migrate
+
+seed: ## Seed
+	python -m src.seed
 
 shell: ## Spawns a shell within the virtualenv
 	python -m pipenv shell
