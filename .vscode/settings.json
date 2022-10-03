@@ -1,0 +1,65 @@
+{
+  // Backend settings
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [
+    "--config",
+    "${workspaceFolder}/backend/pyproject.toml"
+  ],
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--config",
+    "${workspaceFolder}/backend/setup.cfg"
+  ],
+  // "python.linting.mypyEnabled": true,
+  // "python.linting.mypyArgs": [
+  //   "--follow-imports=silent",
+  //   "--ignore-missing-imports",
+  //   "--show-column-numbers",
+  //   "--config-file",
+  //   "${workspaceFolder}/backend/setup.cfg"
+  // ],
+  "python.analysis.typeCheckingMode": "strict",
+  "python.languageServer": "Jedi",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.tabSize": 4
+  },
+  "python.sortImports.args": [
+    "--settings-path",
+    "${workspaceFolder}/backend/pyproject.toml"
+  ],
+  "autoDocstring.docstringFormat": "google",
+  "autoDocstring.generateDocstringOnEnter": true,
+  "autoDocstring.guessTypes": true,
+  "autoDocstring.startOnNewLine": true,
+  "autoDocstring.includeName": false,
+
+  // Frontend settings
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
+    }
+  },
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+
+  // Common settings
+  "files.eol": "\n"
+}
