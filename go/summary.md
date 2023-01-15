@@ -5,12 +5,14 @@
 `go run main.go`で実行。
 
 ```go
-# 実行ファイルを生成する場合は`main`にしなければならない
-＃ `main`以外だとライブラリとして利用すると判断され、
-＃ `go build`しても実行ファイルは生成されないし、
-# `func main`があるファイルを`go run`しても`package command-line-arguments is not a main package`
-# と表示されて実行されない
-# また、`package main`である場合、`func main`は定義しなければならない
+/*
+実行ファイルを生成する場合は`main`にしなければならない
+`main`以外だとライブラリとして利用すると判断され、
+`go build`しても実行ファイルは生成されないし、
+`func main`があるファイルを`go run`しても`package command-line-arguments is not a main package`
+と表示されて実行されない
+また、`package main`である場合、`func main`は定義しなければならない
+*/
 package main
 
 import "fmt"
