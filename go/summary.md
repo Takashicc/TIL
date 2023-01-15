@@ -36,3 +36,33 @@ func main() {
   - パッケージのソースコードをダウンロードする
 - `go test`
   - テストを実行
+
+### 変数
+
+```go
+func main() {
+  /*
+  helloという名前の変数を定義。
+  値から型を推測できるため、`var hello = "Hello"`
+  のように省略して定義可能。
+  また、`var`自体も省略可能で、`hello := "hello"`
+  のように`:=`を使って定義可能。
+  */
+  var hello string = "Hello!"
+
+  /*
+  複数の変数を一度に定義もできる。
+  値から型を推測できるため、型を省略可能。
+  また、`var自体も省略可能。
+  */
+  var num1, num2 int = 1, 2
+
+  /*
+  以下のように定義もできる。
+  */
+  var (
+    hello string = "Hello"
+    str1, str2 = "str1", "str2"
+  )
+}
+```
