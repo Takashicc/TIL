@@ -66,3 +66,11 @@ func main() {
   )
 }
 ```
+
+### 関数
+
+```go
+func greetings(name string) string {
+  return "Hello " + name
+}
+```
