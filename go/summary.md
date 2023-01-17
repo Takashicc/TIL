@@ -74,3 +74,30 @@ func greetings(name string) string {
   return "Hello " + name
 }
 ```
+
+### 配列
+
+```go
+/*
+`[]`の中に要素数を入れることで、
+固定サイズの配列を定義できる。
+*/
+var array [2]string = [2]string{"a", "b"}
+```
+
+### スライス
+
+```go
+/*
+配列では`[]`に要素数を入れていたが、
+何も指定しないことでスライスとして定義できる。
+*/
+var slice []string = []string{"a", "b"}
+// slice[0:1] -> "a"
+// slice[0:] -> "a", "b"
+// slice[:1] -> "a"
+// slice[:] -> "a", "b"
+
+// 追加
+slice = append(slice, "c")
+```
