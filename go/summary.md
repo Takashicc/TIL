@@ -134,3 +134,32 @@ for {
   // do something
 }
 ```
+
+### メソッド
+
+```go
+type Article struct {
+ author  string
+ content string
+}
+
+// 通常の関数
+func Create(a Article) {
+  // do something
+}
+
+// メソッド
+// また、通常の関数とメソッドで関数名が同じでも、
+// 名前空間が異なるため、コンパイル可能
+func (a Article) Create() {
+ // do something
+}
+
+func main() {
+ article := Article{
+  author:  "著者",
+  content: "内容",
+ }
+ article.Create()
+}
+```
