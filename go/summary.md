@@ -117,3 +117,20 @@ for i, num := range numbers {
   fmt.Println(i, num)
 }
 ```
+
+### while文
+
+while文はないため、`for`を使う。
+
+```go
+i := 0
+for i < 5 {
+  fmt.Println(i)
+  i++
+}
+
+// 無限ループ
+for {
+  // do something
+}
+```
