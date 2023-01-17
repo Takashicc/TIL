@@ -163,3 +163,19 @@ func main() {
  article.Create()
 }
 ```
+
+### エラーハンドリング
+
+```go
+func main() {
+  // byteSliceとerrを返却する関数
+  bs, err := ioutil.ReadFile("hello.txt")
+  // nilとは、初期値が設定されていない値のことで、
+  // 何も保持されていない、または初期化されていないことを指す
+  // つまりerr != nilとはerrに何かしら値が入っていることから
+  // エラーが発生した場合の条件を意味する
+  if err != nil {
+    // do something when error occurs
+  }
+}
+```
