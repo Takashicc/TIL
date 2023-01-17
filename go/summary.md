@@ -101,3 +101,19 @@ var slice []string = []string{"a", "b"}
 // 追加
 slice = append(slice, "c")
 ```
+
+### for文
+
+```go
+var numbers = []int{1, 2}
+
+// for
+for i := 0; i < len(numbers); i++ {
+  fmt.Println(i, numbers[i])
+}
+
+// for ... range
+for i, num := range numbers {
+  fmt.Println(i, num)
+}
+```
