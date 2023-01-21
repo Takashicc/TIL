@@ -179,3 +179,20 @@ func main() {
   }
 }
 ```
+
+### テスト
+
+テストを書くには、`_test.go`で終わる名前のファイルを作成し、`go test`を実行することでテストを実行できる。
+
+```go
+import "testing"
+
+// 関数名はTestXxxの形、またはTest_xxxの形でなければならない
+// Testxxxはダメ
+func TestSomething(t *testing.T) {
+  isError := false
+  if isError {
+    t.Errorf("Error!")
+  }
+}
+```
