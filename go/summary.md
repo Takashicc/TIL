@@ -189,6 +189,19 @@ func main() {
 }
 ```
 
+### マップ
+
+```go
+// map[key_type]value_type
+var colors = map[string]bool{}
+
+// 追加
+colors["red"] = true
+
+// 削除
+delete(colors, "red")
+```
+
 ### エラーハンドリング
 
 ```go
