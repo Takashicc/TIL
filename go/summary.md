@@ -155,6 +155,14 @@ func (a Article) Create() {
  // do something
 }
 
+// メソッドには二つの定義方法があり、
+// 値渡しとポインタ渡しの二通り定義できる
+// 値渡しではコピーが作られ、それに対して変更を加えても元の値は影響を受けない
+// ポインタ渡しにすることで、元の値を変更することができる
+func (a *Article) ChangeSomething() {
+  // do something
+}
+
 func main() {
  article := Article{
   author:  "著者",
