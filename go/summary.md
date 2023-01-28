@@ -202,6 +202,56 @@ colors["red"] = true
 delete(colors, "red")
 ```
 
+### インターフェース
+
+```go
+type Dog struct {}
+type Cat struct {}
+
+func (d Dog) name() string {
+  return "dog"
+}
+
+func (c Cat) name() string {
+  return "cat"
+}
+
+// Goでは、関数名が同じで、引数が異なる型であっても
+// エラーとなる
+// これを回避できる方法としてインターフェースがある
+// func printName(d Dog) {
+//   fmt.Println(d.name())
+// }
+
+// func printName(c Cat) {
+//   fmt.Println(c.name())
+// }
+
+// Animalという名前のインターフェースを定義し、
+// name()という文字列を返す関数があることを定義
+// Goではimplementsのように明示的に実装を書くのではなく、
+// 関数名と引数と戻り値が全て同じレシーバーが定義されてる時、
+// インターフェースが実装されていると判断される
+type Animal interface {
+  name() string
+}
+
+// 引数にはAnimalを型としている
+// Animalインターフェースを型とすることで、
+// Animalインターフェースに定義されているものを実装していれば、
+// 実行できるようになる
+func printName(a Animal) {
+  fmt.Println(a.name())
+}
+
+func main() {
+  dog := Dog{}
+  cat := Cat{}
+  printName(dog) // Dog
+  printName(cat) // Cat
+}
+```
+
 ### エラーハンドリング
 
 ```go
