@@ -209,11 +209,11 @@ type Dog struct {}
 type Cat struct {}
 
 func (d Dog) name() string {
-  return "dog"
+  return "Dog"
 }
 
 func (c Cat) name() string {
-  return "cat"
+  return "Cat"
 }
 
 // Goでは、関数名が同じで、引数が異なる型であっても
