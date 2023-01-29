@@ -252,6 +252,25 @@ func main() {
 }
 ```
 
+下記のメソッド(io.Copy)のドキュメントではインターフェースが用いられている実装となっている。
+
+`dst`は`Writer`インターフェースを実装している必要があり、
+`src`は`Reader`インターフェースを実装している必要がある。
+`Writer`インターフェースは`Write`関数があり、`dst`はこれを実装している必要があり、
+`Reader`インターフェースは`Read`関数があり、`src`はこれを実装している必要がある。
+
+```go
+func Copy(dst Writer, src Reader) (written int64, err error)
+
+type Writer interface {
+ Write(p []byte) (n int, err error)
+}
+
+type Reader interface {
+ Read(p []byte) (n int, err error)
+}
+```
+
 ### エラーハンドリング
 
 ```go
