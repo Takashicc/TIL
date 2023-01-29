@@ -271,6 +271,76 @@ type Reader interface {
 }
 ```
 
+### Goルーチン
+
+以下のようなコードだと、各サイトにアクセスしては結果を待って、次のリンクにアクセスするように実行される。これを**並行**処理(複数のことを同時にではなく、瞬間的に切り替えながら処理)するためには、Goルーチンを用いる。
+
+また、Goルーチンは一つのコアで処理される場合は並行処理で処理されており、マルチコアである場合は並列処理で実行される。
+
+**並行**処理は同時に実行はされず、瞬間的に切り替えながら実行されていることで、**並列**処理では同時に実行されていること。
+
+```go
+func main() {
+  links := []string{
+    "https://google.com",
+    "https://amazon.com",
+  }
+  for _, link := range links {
+    checkLink(link)
+  }
+}
+
+func checkLink(link string) {
+  _, err := http.Get(link)
+  if err != nil {
+    fmt.Println(link, "is down.")
+    return
+  }
+
+  fmt.Println(link, "is up.")
+}
+```
+
+Goルーチンを用いる場合
+
+まず初めに、プログラム実行時にメインルーチンが作られており、`go`キーワードを使うことで、子ルーチンが作成されていく。
+子ルーチンの管理はGoスケジュラーがやっており、作られた子ルーチンがブロッキング処理(http.Getのような)になったとき、メインルーチンに戻り、処理を続ける。
+その際、子ルーチンが実行しきれてないことを防ぐために、`Channel`を使うことで子ルーチンが完了していることを管理できる。
+
+```go
+func main() {
+ links := []string{
+  "https://google.com",
+  "https://amazon.com",
+ }
+
+ // stringのチャンネルを作成
+ c := make(chan string)
+
+ for _, link := range links {
+  // 子ルーチンを作成
+  // 子ルーチン作成対象の関数にチャンネルを渡す
+  go checkLink(link, c)
+ }
+
+ for i := 0; i < len(links); i++ {
+  // チャンネルに値が渡されたタイミングで実行される
+  fmt.Println(<-c)
+ }
+}
+
+func checkLink(link string, c chan string) {
+ _, err := http.Get(link)
+ if err != nil {
+  // チャンネルに値を渡す
+  c <- link + " is down"
+  return
+ }
+
+ c <- link + " is up"
+}
+```
+
 ### エラーハンドリング
 
 ```go
